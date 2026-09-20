@@ -2,7 +2,7 @@ public final class CircuitMathTest {
     private static int checks;
     private static void equal(double expected, double actual) {
         checks++;
-        if (Math.abs(expected - actual) > Math.abs(expected) * 1e-10)
+        if (!Double.isFinite(actual) || Math.abs(expected - actual) > Math.abs(expected) * 1e-10)
             throw new AssertionError("Expected " + expected + ", got " + actual);
     }
     private static void rejects(Runnable action) {
